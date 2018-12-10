@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello Fucking World!"
+    return "Hello Phenomenal World!"
 
 
 ## Test Language ##
