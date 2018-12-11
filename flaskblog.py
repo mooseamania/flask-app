@@ -10,4 +10,5 @@ def hello():
     return "<h2>This is about your mom</h2>"
 ## Test Language ##
 
-
+if __name__ == '__main__':
+	app.run(debug=True)
