@@ -1,13 +1,14 @@
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
-    return "<h1>Hello Bay Ridge World!</h1>"
+@app.route("/home")
+def home():
+    return render_template('home.html')
 
 @app.route("/about")
 def about():
-    return "<h2>This is about your mom</h2>"
+    return "<h1>About</h1>"
 ## Test Language ##
 
 if __name__ == '__main__':
