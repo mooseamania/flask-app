@@ -17,7 +17,7 @@ class User(db.Model):
     posts = db.relationship('Post', backref='author', lazy=True)
 
     def __repr__(self):
-        return "User({},{},{})".format("self.username", "self.email", "self.image_file")
+        return "User({},{},{})".format(self.username, self.email, self.image_file)
 
 #print("Every {} should know the use of {} {} programming and {}"
 #    .format("programmer", "Open", "Source", "Operating Systems")) 
