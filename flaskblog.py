@@ -8,6 +8,7 @@ app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
@@ -17,10 +18,8 @@ class User(db.Model):
     posts = db.relationship('Post', backref='author', lazy=True)
 
     def __repr__(self):
-        return "User({},{},{})".format(self.username, self.email, self.image_file)
+        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
-#print("Every {} should know the use of {} {} programming and {}"
-#    .format("programmer", "Open", "Source", "Operating Systems")) 
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -30,7 +29,8 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return "Post({},{})".format("self.title", "self.date_posted")
+        return f"Post('{self.title}', '{self.date_posted}')"
+
 
 posts = [
     {
@@ -63,7 +63,7 @@ def about():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        flash('Account created for Some Person Guy!', 'success')
+        flash(f'Account created for {form.username.data}!', 'success')
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
 
